@@ -1,0 +1,41 @@
+.add-section
+{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.task-name-input, .task-date-input, .add-task-button
+{
+    font-family: var(--font);
+
+    padding: 12px 12px;
+
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+
+    outline: none;
+}
+
+.task-name-input::placeholder
+{
+    font-family: var(--font);
+    color: rgb(160, 160, 160);
+}
+
+.task-date-input
+{
+    cursor: pointer;
+}
+
+.add-task-button
+{
+    background-color: var(--blue);
+    color: white;
+    font-weight: 700;
+
+    cursor: pointer;
+}
