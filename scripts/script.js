@@ -12,14 +12,40 @@ function addTask()
     let taskName = nameInput.value;
     let taskDate = dateInput.value;
 
-    let task = {name: taskName, date: taskDate};
-    tasks.push(task);
-    renderTasks();
-    saveTasks();
+    if (taskName === '')
+    {
+        nameInput.classList.add('task-name-input-error');
+    }
+    else
+    {
+        if (nameInput.classList.contains('task-name-input-error'))
+        {
+            nameInput.classList.remove('task-name-input-error');
+        }
+    }
+    if (taskDate === '')
+    {
+        dateInput.classList.add('task-date-input-error');
+    }
+    else
+    {
+        if (dateInput.classList.contains('task-date-input-error'))
+        {
+            dateInput.classList.remove('task-date-input-error');
+        }
+    }
 
-    /* Clean inputs */
-    nameInput.value = '';
-    dateInput.value = '';
+    if (taskName !== '' && taskDate !== '')
+    {
+        let task = {name: taskName, date: taskDate};
+        tasks.push(task);
+        renderTasks();
+        saveTasks();
+
+        /* Clean inputs */
+        nameInput.value = '';
+        dateInput.value = '';
+    }
 }
 
 function deleteTask(index)
@@ -32,16 +58,21 @@ function deleteTask(index)
 function renderTasks()
 {
     let taskGrid = document.querySelector('.grid-section');
-    let doneSection = document.querySelector('.done-section');
     
     if (tasks.length === 0)
     {
-        taskGrid.innerHTML = '';
-        doneSection.innerHTML = `                <img class="logo-gray" src="logo/logo-gray.png" alt="CheckPG">`;
+        taskGrid.classList.add('grid-section-done');
+
+        taskGrid.innerHTML = `                <img class="logo-gray" src="logo/logo-gray.png" alt="CheckPG">`;
     }
 
     else 
     {
+        if (taskGrid.classList.contains('grid-section-done'))
+        {
+            taskGrid.classList.remove('grid-section-done');
+        }
+
         let htmlCode = '';
 
         for (let i = 0; i < tasks.length; i++)
@@ -57,7 +88,6 @@ function renderTasks()
         }
 
         taskGrid.innerHTML = htmlCode;
-        doneSection.innerHTML = '';
     }
 
 }
