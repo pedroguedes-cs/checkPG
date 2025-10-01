@@ -32,10 +32,12 @@ function deleteTask(index)
 function renderTasks()
 {
     let taskGrid = document.querySelector('.grid-section');
+    let doneSection = document.querySelector('.done-section');
     
     if (tasks.length === 0)
     {
-        taskGrid.innerHTML = `<p class="done-message">DONE!</p>`;
+        taskGrid.innerHTML = '';
+        doneSection.innerHTML = `                <img class="logo-gray" src="logo/logo-gray.png" alt="CheckPG">`;
     }
 
     else 
@@ -55,6 +57,7 @@ function renderTasks()
         }
 
         taskGrid.innerHTML = htmlCode;
+        doneSection.innerHTML = '';
     }
 
 }
