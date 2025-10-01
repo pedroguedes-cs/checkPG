@@ -10,6 +10,7 @@
 .task-name-input, .task-date-input, .add-task-button
 {
     font-family: var(--font);
+    font-size: 16px;
 
     padding: 12px 12px;
 
@@ -23,6 +24,7 @@
 .task-name-input::placeholder
 {
     font-family: var(--font);
+    font-size: 16px;
     color: rgb(160, 160, 160);
 }
 
@@ -35,6 +37,7 @@
 {
     background-color: var(--blue);
     color: white;
+    font-size: 16px;
     font-weight: 700;
 
     cursor: pointer;

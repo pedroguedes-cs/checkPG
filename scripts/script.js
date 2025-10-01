@@ -46,11 +46,10 @@ function renderTasks()
         {
             let task = tasks[i];
             let itemCode = `
-                <div class="task">
-                    <p class="task-name">${task.name}</p>
-                    <p class="task-date">${task.date}</p>
-                    <button class="delete-button" onclick="deleteTask(${i});">Delete</button>
-                </div>`;
+                <p class="task-name">${task.name}</p>
+                <p class="task-date">${task.date}</p>
+                <button class="delete-button" onclick="deleteTask(${i});">Delete</button>
+                `;
 
             htmlCode += itemCode;
         }
