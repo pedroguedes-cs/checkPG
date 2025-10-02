@@ -1,6 +1,7 @@
 .grid-section
 {
     margin-top: 50px;
+    padding-bottom: 50px;
 
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
