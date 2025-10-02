@@ -11,6 +11,39 @@
     row-gap: 20px;
 }
 
+.name-plus-check
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.check-button
+{
+    background-color: white;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: solid 1px var(--purple);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.check-button:hover
+{
+    filter: brightness(90%);
+}
+
+.check-button img
+{
+    width: 30px;
+}
+
+.check-button-true
+{
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
 .task-name, .task-date
 {
     font-family: var(--font);
@@ -23,9 +56,22 @@
     overflow-wrap: anywhere;
 }
 
+.task-name
+{
+    flex: 1;
+    margin-left: 15px;
+}
+
 .task-date
 {
     align-self: start;
+}
+
+.task-name-true, .task-date-true
+{
+    border-color: var(--green);
+    text-decoration: line-through;
+    color: var(--green);
 }
 
 .delete-button

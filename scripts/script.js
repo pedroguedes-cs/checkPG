@@ -37,7 +37,7 @@ function addTask()
 
     if (taskName !== '' && taskDate !== '')
     {
-        let task = {name: taskName, date: taskDate};
+        let task = {name: taskName, date: taskDate, check: false};
         tasks.push(task);
         renderTasks();
         saveTasks();
@@ -92,11 +92,32 @@ function renderTasks()
         for (let i = 0; i < tasks.length; i++)
         {
             let task = tasks[i];
-            let itemCode = `
-                <p class="task-name">${task.name}</p>
+            let itemCode = '';
+
+            if (task.check)
+            {
+                itemCode = `
+                <div class="name-plus-check">
+                    <button class="check-button check-button-true" onclick="check(${i});"><img class="ckeck-image" src="images/check-white.png" alt="Check"></button>
+                    <p class="task-name task-name-true">${task.name}</p>
+                </div>
+                <p class="task-date task-date-true">${task.date}</p>
+                <button class="delete-button" onclick="deleteTask(${i});">Delete</button>
+                `;
+            }
+            else
+            {
+                itemCode = `
+                <div class="name-plus-check">
+                    <button class="check-button" onclick="check(${i});"><img class="ckeck-image" src="images/check-white.png" alt="Check"></button>
+                    <p class="task-name">${task.name}</p>
+                </div>
                 <p class="task-date">${task.date}</p>
                 <button class="delete-button" onclick="deleteTask(${i});">Delete</button>
                 `;
+            }
+
+
 
             htmlCode += itemCode;
         }
@@ -104,6 +125,21 @@ function renderTasks()
         taskGrid.innerHTML = htmlCode;
     }
 
+}
+
+function check(index)
+{
+    if (tasks[index].check)
+    {
+        tasks[index].check = false;
+    }
+    else
+    {
+        tasks[index].check = true;
+    }
+
+    saveTasks();
+    renderTasks();
 }
 
 function formatDate(date)
