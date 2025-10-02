@@ -10,7 +10,7 @@ function addTask()
     let dateInput = document.querySelector('.js-task-date-input'); 
 
     let taskName = nameInput.value;
-    let taskDate = dateInput.value;
+    let taskDate = formatDate(dateInput.value);
 
     if (taskName === '')
     {
@@ -50,6 +50,20 @@ function addTask()
 
 function deleteTask(index)
 {
+    /* Remove errors */
+    let nameInput = document.querySelector('.js-task-name-input'); 
+    let dateInput = document.querySelector('.js-task-date-input'); 
+
+    if (nameInput.classList.contains('task-name-input-error'))
+    {
+        nameInput.classList.remove('task-name-input-error');
+    }
+    if (dateInput.classList.contains('task-date-input-error'))
+    {
+        dateInput.classList.remove('task-date-input-error');
+    }
+
+    /* Delete */
     tasks.splice(index, 1);
     renderTasks();
     saveTasks();
@@ -90,6 +104,43 @@ function renderTasks()
         taskGrid.innerHTML = htmlCode;
     }
 
+}
+
+function formatDate(date)
+{
+    if (date === '')
+    {
+        return date;
+    }
+    else
+    {
+        let result = {day: '', month: '', year: ''};
+
+        let dashCounter = 0;
+
+        for (let i = 0; i < date.length; i++)
+        {
+            if (date[i] === '-')
+            {
+                dashCounter++;
+            }
+            else if (dashCounter === 0)
+            {
+                result.year += date[i];
+            }
+            else if (dashCounter === 1)
+            {
+                result.month += date[i];
+            }
+            else if (dashCounter === 2)
+            {
+                result.day += date[i];
+            }
+        }
+
+        let format = `${result.day} / ${result.month} / ${result.year}`;
+        return format;
+    }
 }
 
 function getTasks()

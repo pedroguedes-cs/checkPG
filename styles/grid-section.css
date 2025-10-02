@@ -32,6 +32,17 @@
     border-radius: 8px;
 
     cursor: pointer;
+    transition: filter 0.15s;
+}
+
+.delete-button:hover
+{
+    filter: brightness(80%);
+}
+
+.delete-button:hover
+{
+    filter: brightness(60%);
 }
 
 .grid-section-done
